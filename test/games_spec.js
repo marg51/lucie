@@ -1,5 +1,5 @@
 import {expect} from 'chai';
-import {reducer} from '../reducers/games'
+import {gamesReducer as reducer} from '../reducers/games'
 import * as actions from '../actions/games'
 import * as _ from 'lodash'
 
@@ -150,7 +150,6 @@ describe('Games', () => {
         expect(actions.play({id: 1, row:0, column: 1, playerId: "laurent"})).to.deep.equal({
           type: 'GAME:PLAY',
           row: 0,
-          gameId: 1,
           column: 1,
           id: 1,
           playerId: "laurent"

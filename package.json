@@ -5,7 +5,8 @@
   "main": "games.js",
   "scripts": {
     "test": "mocha --compilers js:babel-core/register --recursive",
-    "test:watch": "npm run test -- --watch"
+    "test:watch": "npm run test -- --watch",
+    "build": ""
   },
   "author": "",
   "license": "ISC",

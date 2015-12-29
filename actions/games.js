@@ -56,7 +56,6 @@ export function play({id, row, column, playerId}) {
     return {
         type: 'GAME:PLAY',
         id,
-        gameId: id, // backward
         row,
         column,
         playerId
@@ -70,7 +69,6 @@ export function finishGame({id}) {
 
     return {
         type: 'GAME:FINISH',
-        id,
-        gameId: id // backward
+        id
     }
 }
