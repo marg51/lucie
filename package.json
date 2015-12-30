@@ -1,12 +1,12 @@
 {
-  "name": "reducers",
+  "name": "lucie",
   "version": "1.0.0",
   "description": "",
-  "main": "games.js",
+  "main": "dist/main.js",
   "scripts": {
     "test": "mocha --compilers js:babel-core/register --recursive",
     "test:watch": "npm run test -- --watch",
-    "build": ""
+    "build": "babel reducers/ helpers/ actions/ --out-file dist/main.js"
   },
   "author": "",
   "license": "ISC",
