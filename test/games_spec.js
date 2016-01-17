@@ -137,6 +137,14 @@ describe('Games', () => {
         expect(players.length).to.equal(0)
         expect(state.games[1].players.length).to.equal(1)
       })
+      
+      it('should throw if game doesnt exist', () => {
+          var fn = () => {
+              return reducer(undefined, actions.joinGame({id: 1, playerId: 'laurent'}))
+          }
+          
+          expect(fn).to.throw('id')
+      })
     })
   })
 
@@ -210,6 +218,14 @@ describe('Games', () => {
         // old matrix is not updated
         expect(history.length).to.equal(0)
       })
+      
+      it('should throw if game doesnt exist', () => {
+          var fn = () => {
+              return reducer(undefined, actions.play({id: 1, playerId: 'laurent', row:0, column: 1}))
+          }
+          
+          expect(fn).to.throw('id')
+      })
     })
   })
 
@@ -227,6 +243,14 @@ describe('Games', () => {
         state = reducer(state, actions.finishGame({id: 1}))
 
         expect(state.games[1].finished).to.equal(true)
+      })
+      
+      it('should throw if game doesnt exist', () => {
+          var fn = () => {
+              return reducer(undefined, actions.finishGame({id: 1}))
+          }
+          
+          expect(fn).to.throw('id')
       })
     })
   })

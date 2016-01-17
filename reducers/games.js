@@ -3,7 +3,11 @@ import {merge} from 'lodash'
 export const INIT_STATE = {
     games: {}
 }
-
+function checkGame({id, state}) {
+    if(!state.games[id]) {
+        throw new Error('No game id #'+id)
+    }
+}
 export function gamesReducer(state = INIT_STATE, action) {
     switch(action.type) {
         case '//init/state':
@@ -16,6 +20,7 @@ export function gamesReducer(state = INIT_STATE, action) {
             })
 
         case 'GAME:JOIN':
+            checkGame({id: action.id, state})
             // should this piece of logic be here?
             if(state.games[action.id].players.length>=2 || state.games[action.id].players.indexOf(action.playerId) != -1) {
                 return state
@@ -31,6 +36,7 @@ export function gamesReducer(state = INIT_STATE, action) {
                 action.id = action.gameId
             }
 
+            checkGame({id: action.id, state})
             return merge({}, state, {
                 games: {
                     [action.id]: {
@@ -50,6 +56,7 @@ export function gamesReducer(state = INIT_STATE, action) {
                 action.id = action.gameId
             }
 
+            checkGame({id: action.id, state})
             return merge({}, state, {
                 games: {
                     [action.id]: {
@@ -64,6 +71,7 @@ export function gamesReducer(state = INIT_STATE, action) {
                 action.id = action.gameId
             }
 
+            checkGame({id: action.id, state})
             if(state.player != action.playerId) {
                 return merge({}, state, {games: {[action.id]: {player: action.playerId}}})
             }
